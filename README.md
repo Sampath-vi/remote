@@ -4,7 +4,7 @@
 
 1. ```git clone git@github.com:Sampath-vi/remote.git```
 2. ```cd remote; npm install; npm start; ``` - The app should start on port 8081.
-3. Expose this port via [ngrok](https://ngrok.com/) or any other service and copy the URL. This URL will be necessary for the host app to acccess these resources.
+3. Expose this port via [ngrok](https://ngrok.com/) or use the `localhost` and copy the URL. This URL will be necessary for the host app to acccess these resources.
 
 
 # Directory 
