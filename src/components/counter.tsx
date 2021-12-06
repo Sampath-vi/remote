@@ -1,18 +1,17 @@
 import React from 'react';
+import "../index.css";
 
-export default (props) => {
+export default ({ additionalCount }: { additionalCount: string }) => {
   const [count, setCount] = React.useState(0)
 
   const incrementCount = () => {
-    // apicall
-    // remote stor wil do the apiCall
     setCount(count + 1)
   }
 
   return (
-    <div>
+    <div className="container">
       <div>Count: {count}</div>
-      <div>Additional Count: {props.additionalCount}</div>
+      <div>Additional Count: {additionalCount}</div>
       <button onClick={incrementCount}>  Increment Count </button>
     </div>
   );

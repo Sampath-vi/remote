@@ -26,7 +26,6 @@ class healthStore implements HealthStore {
   public async fetchHealth() {
     try {
       const resp = await axios.get('https://api.rudderstack.com/health');
-      console.log(resp.data);
       this.health = resp.data;
     } catch (error) {
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import healthStore from './store';
-import { action, observable, makeObservable, runInAction } from 'mobx';
+import healthStore from '../stores/healthStore';
 import { observer } from 'mobx-react';
+import "../index.css";
 
 export default observer(() => {
   React.useEffect(() => {
@@ -9,7 +9,7 @@ export default observer(() => {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <div>
         Config Backend Health:
         <table>
