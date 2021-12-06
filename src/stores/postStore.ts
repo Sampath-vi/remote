@@ -9,16 +9,19 @@ export interface Post {
 interface PostStore {
   post: Post | null;
   addPost: (u: Post) => void;
+  posts: Post[] | null;
 }
 
 class postStore implements PostStore {
 
   post = null;
+  posts = JSON.parse(localStorage.getItem('posts')) || [];
 
 
   constructor() {
     makeObservable(this, {
       post: observable,
+      posts: observable,
       addPost: action
     })
   }
@@ -27,6 +30,8 @@ class postStore implements PostStore {
     try {
       const resp = await axios.post('https://jsonplaceholder.typicode.com/posts', { ...post, userId: Math.random() });
       this.post = resp.data;
+      this.posts.push(this.post);
+      localStorage.setItem('posts', JSON.stringify(this.posts));
     } catch (error) {
 
     }
