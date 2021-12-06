@@ -15,9 +15,9 @@ export default observer(({ post: { title = "", body = "" } = { title: "", body: 
   const [postTitle, setPostTitle] = React.useState(title);
   const [postBody, setPostBody] = React.useState(body);
 
-  const submitForm = (e: React.MouseEvent) => {
+  const submitForm = async (e: React.MouseEvent) => {
     e.preventDefault();
-    postStore.addPost({
+    await postStore.addPost({
       title: postTitle,
       body: postBody,
     });
@@ -53,7 +53,7 @@ export default observer(({ post: { title = "", body = "" } = { title: "", body: 
           }} />
         </div>
 
-        <button type="submit" onClick={onClick || submitForm} value="Submit">Submit</button>
+        <button onClick={submitForm} value="Submit">Submit</button>
       </form>
     </div>
   );

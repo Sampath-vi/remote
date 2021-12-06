@@ -25,11 +25,7 @@ class postStore implements PostStore {
 
   public async addPost(post) {
     try {
-      const resp = await axios.post('https://jsonplaceholder.typicode.com/posts', {
-        title: 'foo',
-        body: 'bar',
-        userId: 1,
-      });
+      const resp = await axios.post('https://jsonplaceholder.typicode.com/posts', { ...post, userId: Math.random() });
       this.post = resp.data;
     } catch (error) {
 
