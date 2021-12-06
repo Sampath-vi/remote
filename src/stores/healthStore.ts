@@ -1,21 +1,19 @@
 import { action, observable, makeObservable, runInAction } from 'mobx';
 const axios = require('axios');
 
+interface Health {
+  server: string;
+  db: string;
+  redis: string;
+}
 
 interface HealthStore {
-  health: Record<string, string>;
+  health: Health | null;
   fetchHealth: () => void;
 }
 
 class healthStore implements HealthStore {
-
-  health = { 
-    server: 'fetching...', 
-    db: 'fetching...', 
-    redis: 'fetching...' 
-  }
-
-
+  health = null
   constructor() {
     makeObservable(this, {
       health: observable,

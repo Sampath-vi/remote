@@ -3,7 +3,14 @@ import postStore, { Post } from '../stores/postStore';
 import { observer } from 'mobx-react';
 import "../index.css";
 
-export default observer(({ post: { title = "", body = "" } = { title: "", body: "" } }: { post: Post }) => {
+interface AddNewPost {
+  post: Post;
+  onClick?: () => void;
+  onChange?: ({ title, body }) => void;
+}
+
+
+export default observer(({ post: { title = "", body = "" } = { title: "", body: "" }, onClick = () => null, onChange = () => null }: AddNewPost) => {
 
   const [postTitle, setPostTitle] = React.useState(title);
   const [postBody, setPostBody] = React.useState(body);
@@ -16,25 +23,37 @@ export default observer(({ post: { title = "", body = "" } = { title: "", body: 
     });
   };
 
+  const onFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (name === "title") {
+      onChange({ title: value, body: postBody });
+    } else if (name === "body") {
+      onChange({ title: postTitle, body: value });
+    }
+  };
+
+
   return (
     <div className="container">
       <h2>Add New Post</h2>
       <form>
-        <div style={{marginBottom: '10px'}}>
+        <div style={{ marginBottom: '10px' }}>
           <label>Title:  </label>
-          <input type="text" value={postTitle} onChange={(e) => {
+          <input type="text" name="title" value={postTitle} onChange={(e) => {
+            onFormChange(e);
             setPostTitle(e.target.value);
           }} />
         </div>
 
-        <div style={{marginBottom: '20px'}}>
+        <div style={{ marginBottom: '20px' }}>
           <label>Body:  </label>
-          <input type="text" value={postBody} onChange={(e) => {
+          <input type="text" name="body" value={postBody} onChange={(e) => {
+            onFormChange(e);
             setPostBody(e.target.value);
           }} />
         </div>
 
-        <button type="submit" onClick={submitForm} value="Submit">Submit</button>
+        <button type="submit" onClick={onClick || submitForm} value="Submit">Submit</button>
       </form>
     </div>
   );

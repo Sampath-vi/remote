@@ -27,7 +27,7 @@ const App = (props) => {
           <Health />
         </TabPane>
         <TabPane tab="Post" key="3">
-          <AddPost post={props.post} />
+          <AddPost post={props.post} onChange={props.onChange} onClick={props.onClick} />
         </TabPane>
       </Tabs>
     </div>

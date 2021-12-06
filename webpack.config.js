@@ -47,6 +47,7 @@ module.exports = {
       exposes: {
         "./counter": "./src/components/counter.tsx",
         "./health": "./src/components/health.tsx",
+        "./post": "./src/components/addNewPost.tsx",
       },
       shared: {
         ...deps,
