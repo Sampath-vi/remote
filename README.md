@@ -19,3 +19,7 @@
 - The resources are being exposed via webpack in a file called `remoteEntry.js`. Once the server is up, navigate to `http://localhost:8081/remoteEntry.js`.
 - Components are being exposed and configured in `webpack.config.js` - [webpack.config.js](https://github.com/Sampath-vi/remote/blob/master/webpack.config.js#L43) 
 - More on Module Federation - [module-federation](https://webpack.js.org/concepts/module-federation/)
+
+# Host
+
+[Host App](https://github.com/Sampath-vi/host)
